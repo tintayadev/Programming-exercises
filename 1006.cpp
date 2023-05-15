@@ -5,37 +5,29 @@ using namespace std;
 int main(){
     int cases;
     cin >> cases;
+    cin.ignore();
     for (int i = 0; i < cases; i++){
         string txt;
-        cin >> txt;
-        int sw=0;
-        for (int i = 0; i < txt.size(); i++)
-        {
-            if(txt[i] != ' '){
-                if(sw==0){
-                    if(islower(txt[i])){
-                        cout << (char) (txt[i] - 32);
-                    }else{
-                        cout << (char) (txt[i]);
-                    }
-                    sw++;
+        getline(cin, txt);
+        int j = 0;
+        int sw = 1;
+        while(j < txt.size()){
+            if(' ' != (char) txt[j]){
+                if(sw == 1){
+                    cout << (char) toupper(txt[j]);
+                    sw = 0;
                 }else{
-                    if(islower(txt[i])){
-                        cout << (char) (txt[i]);
-                    }else{
-                        cout << (char) (txt[i] + 32);
-                    }
-                    sw--;
+                    cout << (char) tolower(txt[j]);
+                    sw = 1;
                 }
             }else{
-                cout << " ";
+                cout << (char) txt[j];
             }
-            cout << endl;
+            
+            j++;
         }
+        cout << endl;
         
-
     }
-    
-
     return 0;
 }
