@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <algorithm>
 
 using namespace std;
@@ -15,13 +15,6 @@ int main(){
         //nt len = sizeof(numbers) / sizeof(numbers[0]);
         sort(numbers, numbers + n);
         int cnt =0;
-        /*
-        cout << "N: "<< n;
-        for (int i = 0; i < n; i++)
-        {
-            cout << numbers[i] << " - ";
-        }
-        cout << "Efec: "<< efectivo << endl;*/
         
         for(int j=n-1; j>=0;j--){
             if(efectivo % numbers[j] == 0){
@@ -41,6 +34,47 @@ int main(){
         }else{
             cout << cnt << endl;
         }
+    }
+
+    return 0;
+}
+*/
+
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+
+int minCoins(vector<int>& denominations, int change) {
+    int n = denominations.size();
+    vector<int> dp(change + 1, INT_MAX);
+    dp[0] = 0;
+
+    for (int i = 1; i <= change; i++) {
+        for (int j = 0; j < n; j++) {
+            if (denominations[j] <= i) {
+                int subproblem = dp[i - denominations[j]];
+                if (subproblem != INT_MAX && subproblem + 1 < dp[i]) {
+                    dp[i] = subproblem + 1;
+                }
+            }
+        }
+    }
+
+    return dp[change] == INT_MAX ? -1 : dp[change];
+}
+
+int main() {
+    int N, m;
+    while (cin >> N) {
+        vector<int> denominations(N);
+        for (int i = 0; i < N; i++) {
+            cin >> denominations[i];
+        }
+        cin >> m;
+
+        int result = minCoins(denominations, m);
+        cout << result << endl;
     }
 
     return 0;
