@@ -18,8 +18,6 @@ def find_distance_and_decode(text):
 
     return distance, decoded_text
 
-
-# Lectura de la entrada
 num_cases = int(input())
 
 for _ in range(num_cases):
