@@ -1,3 +1,5 @@
+# Rumores
+# https://jv.umsa.bo/problem.php?id=1003
 def solveF(m, x, y, matriz):
     aux_lista = set()
     for _ in range(m):

@@ -1,3 +1,5 @@
+// Rumores
+// https://jv.umsa.bo/problem.php?id=1003
 #include <iostream>
 #include <vector>
 
