@@ -23,7 +23,7 @@
 while True:
     palabra = input()
     longitud = len(palabra)
-    if longitud >= 3 and palabra[:3] == 'END':
+    if palabra == 'END':
         break
     palabra_invertida = palabra[::-1]
     longitudes_prefijo = [0] * longitud
